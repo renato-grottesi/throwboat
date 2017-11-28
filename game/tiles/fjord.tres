@@ -1,0 +1,367 @@
+[gd_resource type="TileSet" load_steps=46 format=1]
+
+[ext_resource path="res://tiles/coast_corner_1.tex" type="Texture" id=1]
+[ext_resource path="res://tiles/coast_flat_1.tex" type="Texture" id=2]
+[ext_resource path="res://tiles/coast_flat_wave4.tex" type="Texture" id=3]
+[ext_resource path="res://tiles/coast_flat_wave5.tex" type="Texture" id=4]
+[ext_resource path="res://tiles/coast_flat_wave6.tex" type="Texture" id=5]
+[ext_resource path="res://tiles/coast_flat_wave7.tex" type="Texture" id=6]
+[ext_resource path="res://tiles/coast_flat_wave8.tex" type="Texture" id=7]
+[ext_resource path="res://tiles/coast_flat_wave9.tex" type="Texture" id=8]
+[ext_resource path="res://tiles/coast_flat_wave2.tex" type="Texture" id=9]
+[ext_resource path="res://tiles/coast_flat_wave3.tex" type="Texture" id=10]
+[ext_resource path="res://tiles/coast_swing_1.tex" type="Texture" id=11]
+[ext_resource path="res://tiles/coast_inner.tex" type="Texture" id=12]
+[ext_resource path="res://tiles/coast_swing_2.tex" type="Texture" id=13]
+[ext_resource path="res://tiles/water1.tex" type="Texture" id=14]
+[ext_resource path="res://tiles/water2.tex" type="Texture" id=15]
+[ext_resource path="res://tiles/water3.tex" type="Texture" id=16]
+[ext_resource path="res://tiles/water4.tex" type="Texture" id=17]
+[ext_resource path="res://tiles/water5.tex" type="Texture" id=18]
+[ext_resource path="res://tiles/water6.tex" type="Texture" id=19]
+[ext_resource path="res://tiles/water7.tex" type="Texture" id=20]
+[ext_resource path="res://tiles/water8.tex" type="Texture" id=21]
+[ext_resource path="res://tiles/tree_top.tex" type="Texture" id=22]
+[ext_resource path="res://tiles/rain1.tex" type="Texture" id=23]
+[ext_resource path="res://tiles/rain2.tex" type="Texture" id=24]
+[ext_resource path="res://tiles/rain3.tex" type="Texture" id=25]
+[ext_resource path="res://tiles/rain4.tex" type="Texture" id=26]
+[ext_resource path="res://tiles/rain5.tex" type="Texture" id=27]
+[ext_resource path="res://tiles/rain6.tex" type="Texture" id=28]
+[ext_resource path="res://tiles/rain7.tex" type="Texture" id=29]
+[ext_resource path="res://tiles/rain8.tex" type="Texture" id=30]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 14, 12, 14, 18, 20, 18, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, -32, 32, -32, 14, 0, 14 )
+
+[sub_resource type="CanvasItemShader" id=7]
+
+_code = {
+"fragment": "uniform texture frame1;
+uniform texture frame2;
+uniform texture frame3;
+uniform texture frame4;
+uniform texture frame5;
+uniform texture frame6;
+uniform texture frame7;
+uniform texture frame8;
+
+float time = fract(TIME);
+if (time < 1.0/8.0) { COLOR = tex(frame1, UV);} else {
+if (time < 2.0/8.0) { COLOR = tex(frame2, UV);} else {
+if (time < 3.0/8.0) { COLOR = tex(frame3, UV);} else {
+if (time < 4.0/8.0) { COLOR = tex(frame4, UV);} else {
+if (time < 5.0/8.0) { COLOR = tex(frame5, UV);} else {
+if (time < 6.0/8.0) { COLOR = tex(frame6, UV);} else {
+if (time < 7.0/8.0) { COLOR = tex(frame7, UV);} else {
+if (time < 8.0/8.0) { COLOR = tex(frame8, UV);} else {
+
+}}}}}}}}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=11]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 3 )
+shader_param/frame2 = ExtResource( 4 )
+shader_param/frame3 = ExtResource( 5 )
+shader_param/frame4 = ExtResource( 6 )
+shader_param/frame5 = ExtResource( 7 )
+shader_param/frame6 = ExtResource( 8 )
+shader_param/frame7 = ExtResource( 9 )
+shader_param/frame8 = ExtResource( 10 )
+
+[sub_resource type="CanvasItemMaterial" id=12]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 5 )
+shader_param/frame2 = ExtResource( 6 )
+shader_param/frame3 = ExtResource( 7 )
+shader_param/frame4 = ExtResource( 8 )
+shader_param/frame5 = ExtResource( 9 )
+shader_param/frame6 = ExtResource( 10 )
+shader_param/frame7 = ExtResource( 3 )
+shader_param/frame8 = ExtResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=13]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 7 )
+shader_param/frame2 = ExtResource( 8 )
+shader_param/frame3 = ExtResource( 9 )
+shader_param/frame4 = ExtResource( 10 )
+shader_param/frame5 = ExtResource( 3 )
+shader_param/frame6 = ExtResource( 4 )
+shader_param/frame7 = ExtResource( 5 )
+shader_param/frame8 = ExtResource( 6 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -64, 32, -64, 0, -46, 0, -46, 10 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -32, 32, -64, 32, -46, 10, -42, 14 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -32, 32, -42, 14, -32, 14 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, 18, 32, 32, 44, 32, 64, 0, 64 )
+
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 14 )
+shader_param/frame2 = ExtResource( 15 )
+shader_param/frame3 = ExtResource( 16 )
+shader_param/frame4 = ExtResource( 17 )
+shader_param/frame5 = ExtResource( 18 )
+shader_param/frame6 = ExtResource( 19 )
+shader_param/frame7 = ExtResource( 20 )
+shader_param/frame8 = ExtResource( 21 )
+
+[sub_resource type="CanvasItemMaterial" id=9]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 9 )
+shader_param/frame2 = ExtResource( 10 )
+shader_param/frame3 = ExtResource( 3 )
+shader_param/frame4 = ExtResource( 4 )
+shader_param/frame5 = ExtResource( 5 )
+shader_param/frame6 = ExtResource( 6 )
+shader_param/frame7 = ExtResource( 7 )
+shader_param/frame8 = ExtResource( 8 )
+
+[sub_resource type="CanvasItemShader" id=14]
+
+_code = {
+"fragment": "	uniform texture frame1;
+uniform texture frame2;
+uniform texture frame3;
+uniform texture frame4;
+uniform texture frame5;
+uniform texture frame6;
+uniform texture frame7;
+uniform texture frame8;
+
+float time = fract(TIME);
+if (time < 1.0/8.0) { COLOR = tex(frame1, UV);} else {
+if (time < 2.0/8.0) { COLOR = tex(frame2, UV);} else {
+if (time < 3.0/8.0) { COLOR = tex(frame3, UV);} else {
+if (time < 4.0/8.0) { COLOR = tex(frame4, UV);} else {
+if (time < 5.0/8.0) { COLOR = tex(frame5, UV);} else {
+if (time < 6.0/8.0) { COLOR = tex(frame6, UV);} else {
+if (time < 7.0/8.0) { COLOR = tex(frame7, UV);} else {
+if (time < 8.0/8.0) { COLOR = tex(frame8, UV);} else {
+
+}}}}}}}}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=10]
+
+shader/shader = SubResource( 14 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 23 )
+shader_param/frame2 = ExtResource( 24 )
+shader_param/frame3 = ExtResource( 25 )
+shader_param/frame4 = ExtResource( 26 )
+shader_param/frame5 = ExtResource( 27 )
+shader_param/frame6 = ExtResource( 28 )
+shader_param/frame7 = ExtResource( 29 )
+shader_param/frame8 = ExtResource( 30 )
+
+[sub_resource type="CanvasItemMaterial" id=15]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 23 )
+shader_param/frame2 = ExtResource( 24 )
+shader_param/frame3 = ExtResource( 25 )
+shader_param/frame4 = ExtResource( 26 )
+shader_param/frame5 = ExtResource( 27 )
+shader_param/frame6 = ExtResource( 28 )
+shader_param/frame7 = ExtResource( 29 )
+shader_param/frame8 = ExtResource( 30 )
+
+[resource]
+
+0/name = "coast_corner_1"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shapes = [ SubResource( 1 ) ]
+0/one_way_collision_direction = Vector2( 0, 0 )
+0/one_way_collision_max_depth = 0.0
+1/name = "coast_flat_1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/occluder_offset = Vector2( 32, 0 )
+1/navigation_offset = Vector2( 32, 0 )
+1/shape_offset = Vector2( 32, 0 )
+1/shapes = [ SubResource( 2 ) ]
+1/one_way_collision_direction = Vector2( 0, 0 )
+1/one_way_collision_max_depth = 0.0
+2/name = "coast_swing_1"
+2/texture = ExtResource( 11 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 32, 32 )
+2/occluder_offset = Vector2( 64, 0 )
+2/navigation_offset = Vector2( 64, 0 )
+2/shape_offset = Vector2( 64, 0 )
+2/shapes = [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
+2/one_way_collision_direction = Vector2( 0, 0 )
+2/one_way_collision_max_depth = 0.0
+3/name = "coast_inner"
+3/texture = ExtResource( 12 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 32, 32 )
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/one_way_collision_direction = Vector2( 0, 0 )
+3/one_way_collision_max_depth = 0.0
+4/name = "coast_swing_2"
+4/texture = ExtResource( 13 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 32, 32 )
+4/occluder_offset = Vector2( 0, -32 )
+4/navigation_offset = Vector2( 0, -32 )
+4/shape_offset = Vector2( 0, -32 )
+4/shapes = [ SubResource( 6 ) ]
+4/one_way_collision_direction = Vector2( 0, 0 )
+4/one_way_collision_max_depth = 0.0
+5/name = "water"
+5/texture = ExtResource( 14 )
+5/tex_offset = Vector2( 0, 0 )
+5/material = SubResource( 8 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 32, 32 )
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+5/one_way_collision_direction = Vector2( 0, 0 )
+5/one_way_collision_max_depth = 0.0
+6/name = "coast_flat_wave"
+6/texture = ExtResource( 4 )
+6/tex_offset = Vector2( 0, 0 )
+6/material = SubResource( 9 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 32, 32 )
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+6/one_way_collision_direction = Vector2( 0, 0 )
+6/one_way_collision_max_depth = 0.0
+7/name = "tree_top"
+7/texture = ExtResource( 22 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 32, 32 )
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+7/one_way_collision_direction = Vector2( 0, 0 )
+7/one_way_collision_max_depth = 0.0
+8/name = "coast_flat_wave1"
+8/texture = ExtResource( 23 )
+8/tex_offset = Vector2( 0, 0 )
+8/material = SubResource( 10 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 32, 32 )
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shapes = [  ]
+8/one_way_collision_direction = Vector2( 0, 0 )
+8/one_way_collision_max_depth = 0.0
+9/name = "rain"
+9/texture = ExtResource( 23 )
+9/tex_offset = Vector2( 0, 0 )
+9/material = SubResource( 15 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 32, 32 )
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shapes = [  ]
+9/one_way_collision_direction = Vector2( 0, 0 )
+9/one_way_collision_max_depth = 0.0
+10/name = "coast_flat_async_wave_0"
+10/texture = ExtResource( 4 )
+10/tex_offset = Vector2( 0, 0 )
+10/material = SubResource( 11 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 32, 32 )
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+10/one_way_collision_direction = Vector2( 0, 0 )
+10/one_way_collision_max_depth = 0.0
+11/name = "coast_flat_async_wave_1"
+11/texture = ExtResource( 4 )
+11/tex_offset = Vector2( 0, 0 )
+11/material = SubResource( 12 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 32, 32 )
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shapes = [  ]
+11/one_way_collision_direction = Vector2( 0, 0 )
+11/one_way_collision_max_depth = 0.0
+12/name = "coast_flat_async_wave_2"
+12/texture = ExtResource( 4 )
+12/tex_offset = Vector2( 0, 0 )
+12/material = SubResource( 13 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 32, 32 )
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shapes = [  ]
+12/one_way_collision_direction = Vector2( 0, 0 )
+12/one_way_collision_max_depth = 0.0
+

@@ -1,0 +1,513 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://levels/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://tiles/fjord.tres" type="TileSet" id=2]
+[ext_resource path="res://hud/huge_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://hud/medium_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://hud/gui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://hud/options.gd" type="Script" id=6]
+[ext_resource path="res://levels/main_menu.ogg" type="AudioStream" id=7]
+
+[node name="main_menu" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="water" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 5, 1, 5, 2, 5, 3, 5, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13, 5, 14, 5, 15, 5, 16, 5, 17, 5, 18, 5, 19, 5, 65536, 5, 65537, 5, 65538, 5, 65539, 5, 65540, 5, 65541, 5, 65542, 5, 65543, 5, 65544, 5, 65545, 5, 65546, 5, 65547, 5, 65548, 5, 65549, 5, 65550, 5, 65551, 5, 65552, 5, 65553, 5, 65554, 5, 65555, 5, 131072, 5, 131073, 5, 131074, 5, 131075, 5, 131076, 5, 131077, 5, 131078, 5, 131079, 5, 131080, 5, 131081, 5, 131082, 5, 131083, 5, 131084, 5, 131085, 5, 131086, 5, 131087, 5, 131088, 5, 131089, 5, 131090, 5, 131091, 5, 196608, 5, 196609, 5, 196610, 5, 196611, 5, 196612, 5, 196613, 5, 196614, 5, 196615, 5, 196616, 5, 196617, 5, 196618, 5, 196619, 5, 196620, 5, 196621, 5, 196622, 5, 196623, 5, 196624, 5, 196625, 5, 196626, 5, 196627, 5, 262144, 5, 262145, 5, 262146, 5, 262147, 5, 262148, 5, 262149, 5, 262150, 5, 262151, 5, 262152, 5, 262153, 5, 262154, 5, 262155, 5, 262156, 5, 262157, 5, 262158, 5, 262159, 5, 262160, 5, 262161, 5, 262162, 5, 262163, 5, 327680, 5, 327681, 5, 327682, 5, 327683, 5, 327684, 5, 327685, 5, 327686, 5, 327687, 5, 327688, 5, 327689, 5, 327690, 5, 327691, 5, 327692, 5, 327693, 5, 327694, 5, 327695, 5, 327696, 5, 327697, 5, 327698, 5, 327699, 5, 393216, 5, 393217, 5, 393218, 5, 393219, 5, 393220, 5, 393221, 5, 393222, 5, 393223, 5, 393224, 5, 393225, 5, 393226, 5, 393227, 5, 393228, 5, 393229, 5, 393230, 5, 393231, 5, 393232, 5, 393233, 5, 393234, 5, 393235, 5, 458752, 5, 458753, 5, 458754, 5, 458755, 5, 458756, 5, 458757, 5, 458758, 5, 458759, 5, 458760, 5, 458761, 5, 458762, 5, 458763, 5, 458764, 5, 458765, 5, 458766, 5, 458767, 5, 458768, 5, 458769, 5, 458770, 5, 458771, 5, 524288, 5, 524289, 5, 524290, 5, 524291, 5, 524292, 5, 524293, 5, 524294, 5, 524295, 5, 524296, 5, 524297, 5, 524298, 5, 524299, 5, 524300, 5, 524301, 5, 524302, 5, 524303, 5, 524304, 5, 524305, 5, 524306, 5, 524307, 5, 589824, 5, 589825, 5, 589826, 5, 589827, 5, 589828, 5, 589829, 5, 589830, 5, 589831, 5, 589832, 5, 589833, 5, 589834, 5, 589835, 5, 589836, 5, 589837, 5, 589838, 5, 589839, 5, 589840, 5, 589841, 5, 589842, 5, 589843, 5, 655360, 5, 655361, 5, 655362, 5, 655363, 5, 655364, 5, 655365, 5, 655366, 5, 655367, 5, 655368, 5, 655369, 5, 655370, 5, 655371, 5, 655372, 5, 655373, 5, 655374, 5, 655375, 5, 655376, 5, 655377, 5, 655378, 5, 655379, 5, 720896, 5, 720897, 5, 720898, 5, 720899, 5, 720900, 5, 720901, 5, 720902, 5, 720903, 5, 720904, 5, 720905, 5, 720906, 5, 720907, 5, 720908, 5, 720909, 5, 720910, 5, 720911, 5, 720912, 5, 720913, 5, 720914, 5, 720915, 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fjord" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, -1610612734, 1, 1610612737, 2, 1610612737, 3, 1610612737, 4, 1610612737, 5, 1610612737, 6, 1610612737, 7, 1610612737, 8, 1610612737, 9, 1610612737, 10, 1610612737, 11, 1610612737, 12, 1610612737, 13, 1610612737, 14, 1610612737, 15, 1610612737, 16, 1610612737, 17, 1610612737, 18, 1610612737, 19, 1610612738, 65536, -1610612735, 65541, -1073741824, 65542, 1, 65543, 1, 65544, 1, 65545, 1, 65546, 1, 65547, 1, 65548, 1, 65549, 1, 65550, 0, 65555, -1073741823, 131072, -1610612735, 131077, -1073741823, 131078, -1073741821, 131079, -1073741821, 131080, 3, 131081, -1073741821, 131082, -1073741821, 131083, -1073741821, 131084, -1073741821, 131085, 3, 131086, -1610612735, 131091, -1073741823, 196608, -1610612735, 196613, 1610612736, 196614, 1610612737, 196615, 1610612737, 196616, 1610612737, 196617, 1610612737, 196618, 1610612737, 196619, 1610612737, 196620, 1610612737, 196621, 1610612737, 196622, -1610612736, 196627, -1073741823, 262144, -1610612735, 262163, -1073741823, 327680, -1610612735, 327699, -1073741823, 393216, -1610612735, 393235, -1073741823, 458752, -1610612735, 458771, -1073741823, 524288, -1610612735, 524307, -1073741823, 589824, -1610612735, 589843, -1073741823, 655360, 2, 655361, 1, 655362, 1, 655363, 1, 655364, 1, 655365, 1, 655366, 1, 655367, 1, 655368, 1, 655369, 1, 655370, 1, 655371, 1, 655372, 1, 655373, 1, 655374, 1, 655375, 1, 655376, 1, 655377, 1, 655378, 1, 655379, -1073741822, 720896, 3, 720897, 3, 720898, 3, 720899, 3, 720900, 3, 720901, 3, 720902, 3, 720903, 3, 720904, 3, 720905, 3, 720906, 3, 720907, 3, 720908, 3, 720909, 3, 720910, 3, 720911, 3, 720912, 3, 720913, 3, 720914, 3, 720915, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="interface" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="title" type="Label" parent="interface"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 201.0
+margin/top = 60.0
+margin/right = 445.0
+margin/bottom = 111.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.85098, 0.627451, 0.4, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 4
+text = "ThrowBoat"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="play" type="Button" parent="interface"]
+
+rect/min_size = Vector2( 128, 32 )
+focus_neighbour/left = NodePath("../exit")
+focus_neighbour/top = NodePath("../credits")
+focus_neighbour/bottom = NodePath("../help")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 240.0
+margin/top = 144.0
+margin/right = 400.0
+margin/bottom = 185.0
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "PLAY"
+flat = false
+
+[node name="help" type="Button" parent="interface"]
+
+rect/min_size = Vector2( 128, 32 )
+focus_neighbour/left = NodePath("../exit")
+focus_neighbour/top = NodePath("../play")
+focus_neighbour/bottom = NodePath("../options")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 240.0
+margin/top = 192.0
+margin/right = 400.0
+margin/bottom = 233.0
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "HELP"
+flat = false
+
+[node name="options" type="Button" parent="interface"]
+
+rect/min_size = Vector2( 128, 32 )
+focus_neighbour/left = NodePath("../exit")
+focus_neighbour/top = NodePath("../help")
+focus_neighbour/bottom = NodePath("../credits")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 240.0
+margin/top = 240.0
+margin/right = 400.0
+margin/bottom = 281.0
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "OPTIONS"
+flat = false
+
+[node name="credits" type="Button" parent="interface"]
+
+rect/min_size = Vector2( 128, 32 )
+focus_neighbour/left = NodePath("../exit")
+focus_neighbour/top = NodePath("../options")
+focus_neighbour/bottom = NodePath("../play")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 240.0
+margin/top = 288.0
+margin/right = 400.0
+margin/bottom = 329.0
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "CREDITS"
+flat = false
+
+[node name="exit" type="Button" parent="interface"]
+
+rect/min_size = Vector2( 64, 32 )
+focus_neighbour/right = NodePath("../play")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 32.0
+margin/top = 32.0
+margin/right = 112.0
+margin/bottom = 73.0
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "EXIT"
+flat = false
+
+[node name="dialogs" type="Node" parent="interface"]
+
+[node name="credits" type="AcceptDialog" parent="interface/dialogs"]
+
+visibility/visible = false
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+anchor/bottom = 2
+focus_neighbour/left = NodePath("../../credits")
+focus_neighbour/top = NodePath("../../credits")
+focus_neighbour/right = NodePath("../../credits")
+focus_neighbour/bottom = NodePath("../../credits")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 0.15
+margin/top = 0.0
+margin/right = 0.865625
+margin/bottom = 0.938889
+popup/exclusive = true
+window/title = "Credits"
+dialog/text = "A game by Demotivated Pixels for the GameOff 2017 gamejam
+
+Team assembly, logistics, drink one for the team: John Anthony
+Pixel art: Joan Orantos, Leif-Iulian Øvrelid
+Game programming in Godot: Renato Grottesi
+
+Tools:
+Engine: Godot
+Pixel art: Aseprite
+Audio editing: Audacity
+
+Creative Common parts:
+Music (CC BY): http://freemusicarchive.org/music/Chris_Zabriskie/
+Font (OFL): https://fontlibrary.org/en/font/mr-pixel"
+dialog/hide_on_ok = true
+
+[node name="help" type="AcceptDialog" parent="interface/dialogs"]
+
+visibility/visible = false
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+anchor/bottom = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 0.15
+margin/top = 0.0
+margin/right = 0.86875
+margin/bottom = 0.927778
+popup/exclusive = true
+window/title = "Help"
+dialog/text = "Android:
+  - Touch and drag on the left side of the screen to move the boat
+  - Touch and drag on the right side of the screen to rotate the shield
+  - Release the shield to shoot a captured bullet
+
+Linux/Windows/Mac:
+  - Use arrow keys to move the ship
+  - Use the mouse to point the shield to a direction
+  - Click to shoot a captured bullet
+
+Android/Linux/Windows/Mac:
+  - Use the left thumb joystick to move the boat
+  - Use the right thumb joystick to rotate the shield
+  - Use the main action button to shoot a captured bullet"
+dialog/hide_on_ok = true
+
+[node name="options" type="PopupMenu" parent="interface/dialogs"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = -8.0
+margin/top = -8.0
+margin/right = 644.0
+margin/bottom = 364.0
+popup/exclusive = false
+items = [  ]
+script/script = ExtResource( 6 )
+
+[node name="title" type="Label" parent="interface/dialogs/options"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 208.0
+margin/top = 16.0
+margin/right = 304.0
+margin/bottom = 37.0
+text = "OPTIONS"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sound_label" type="Label" parent="interface/dialogs/options"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 5 )
+margin/left = 64.0
+margin/top = 80.0
+margin/right = 185.0
+margin/bottom = 101.0
+text = "Sound Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="music_label" type="Label" parent="interface/dialogs/options"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 5 )
+margin/left = 64.0
+margin/top = 160.0
+margin/right = 185.0
+margin/bottom = 181.0
+text = "Music Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sound_volume" type="HSlider" parent="interface/dialogs/options"]
+
+focus_neighbour/top = NodePath("../save")
+focus_neighbour/bottom = NodePath("../music_volume")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 224.0
+margin/top = 80.0
+margin/right = 432.0
+margin/bottom = 96.0
+range/min = 0.0
+range/max = 1.0
+range/step = 0.1
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 0
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="music_volume" type="HSlider" parent="interface/dialogs/options"]
+
+focus_neighbour/top = NodePath("../sound_volume")
+focus_neighbour/bottom = NodePath("../invert_l_x")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 224.0
+margin/top = 160.0
+margin/right = 432.0
+margin/bottom = 176.0
+range/min = 0.0
+range/max = 1.0
+range/step = 0.1
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 0
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="invert_l_x" type="CheckBox" parent="interface/dialogs/options"]
+
+focus_neighbour/left = NodePath("../invert_r_x")
+focus_neighbour/top = NodePath("../music_volume")
+focus_neighbour/right = NodePath("../invert_r_x")
+focus_neighbour/bottom = NodePath("../invert_l_y")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 64.0
+margin/top = 224.0
+margin/right = 163.0
+margin/bottom = 254.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Invert L X"
+flat = false
+align = 0
+
+[node name="invert_l_y" type="CheckBox" parent="interface/dialogs/options"]
+
+focus_neighbour/left = NodePath("../invert_r_y")
+focus_neighbour/top = NodePath("../invert_l_x")
+focus_neighbour/right = NodePath("../invert_r_y")
+focus_neighbour/bottom = NodePath("../save")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 64.0
+margin/top = 288.0
+margin/right = 163.0
+margin/bottom = 318.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Invert L Y"
+flat = false
+align = 0
+
+[node name="invert_r_x" type="CheckBox" parent="interface/dialogs/options"]
+
+focus_neighbour/left = NodePath("../invert_l_x")
+focus_neighbour/top = NodePath("../music_volume")
+focus_neighbour/right = NodePath("../invert_l_x")
+focus_neighbour/bottom = NodePath("../invert_r_y")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 288.0
+margin/top = 224.0
+margin/right = 387.0
+margin/bottom = 254.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Invert R X"
+flat = false
+align = 0
+
+[node name="invert_r_y" type="CheckBox" parent="interface/dialogs/options"]
+
+focus_neighbour/left = NodePath("../invert_l_y")
+focus_neighbour/top = NodePath("../invert_r_x")
+focus_neighbour/right = NodePath("../invert_l_y")
+focus_neighbour/bottom = NodePath("../save")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 288.0
+margin/top = 288.0
+margin/right = 387.0
+margin/bottom = 318.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Invert R Y"
+flat = false
+align = 0
+
+[node name="save" type="Button" parent="interface/dialogs/options"]
+
+focus_neighbour/top = NodePath("../invert_l_y")
+focus_neighbour/bottom = NodePath("../sound_volume")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 224.0
+margin/top = 328.0
+margin/right = 282.0
+margin/bottom = 355.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "SAVE"
+flat = false
+
+[node name="music" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 7 )
+stream/play = true
+stream/loop = true
+stream/volume_db = 12.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[connection signal="button_down" from="interface/play" to="." method="_on_play_button_down"]
+
+[connection signal="button_down" from="interface/help" to="." method="_on_help_button_down"]
+
+[connection signal="button_down" from="interface/options" to="." method="_on_options_button_down"]
+
+[connection signal="button_down" from="interface/credits" to="." method="_on_credits_button_down"]
+
+[connection signal="button_down" from="interface/exit" to="." method="_on_exit_button_down"]
+
+[connection signal="hide" from="interface/dialogs/credits" to="." method="_on_popup_hide"]
+
+[connection signal="hide" from="interface/dialogs/help" to="." method="_on_popup_hide"]
+
+[connection signal="hide" from="interface/dialogs/options" to="." method="_on_popup_hide"]
+
+[connection signal="value_changed" from="interface/dialogs/options/sound_volume" to="interface/dialogs/options" method="_on_sound_volume_value_changed"]
+
+[connection signal="value_changed" from="interface/dialogs/options/music_volume" to="interface/dialogs/options" method="_on_music_volume_value_changed"]
+
+[connection signal="toggled" from="interface/dialogs/options/invert_l_x" to="interface/dialogs/options" method="_on_invert_l_x_toggled"]
+
+[connection signal="toggled" from="interface/dialogs/options/invert_l_y" to="interface/dialogs/options" method="_on_invert_l_y_toggled"]
+
+[connection signal="toggled" from="interface/dialogs/options/invert_r_x" to="interface/dialogs/options" method="_on_invert_r_x_toggled"]
+
+[connection signal="toggled" from="interface/dialogs/options/invert_r_y" to="interface/dialogs/options" method="_on_invert_r_y_toggled"]
+
+[connection signal="button_down" from="interface/dialogs/options/save" to="interface/dialogs/options" method="_on_save_button_down"]
+
+

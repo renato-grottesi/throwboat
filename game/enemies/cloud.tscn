@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://enemies/cloud.gd" type="Script" id=1]
+[ext_resource path="res://enemies/thor/clouds_1_0.tex" type="Texture" id=2]
+[ext_resource path="res://enemies/thor/clouds_1_1.tex" type="Texture" id=3]
+[ext_resource path="res://enemies/thor/clouds_1_2.tex" type="Texture" id=4]
+[ext_resource path="res://enemies/thor/clouds_1_3.tex" type="Texture" id=5]
+[ext_resource path="res://enemies/thor/clouds_1_4.tex" type="Texture" id=6]
+[ext_resource path="res://enemies/thor/clouds_1_5.tex" type="Texture" id=7]
+[ext_resource path="res://enemies/draug/draug_shoot.smp" type="Sample" id=8]
+[ext_resource path="res://hud/small_font.tres" type="DynamicFont" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 29.0889, 11.8568 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "fly",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "dying",
+"speed": 10.0
+} ]
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/shoot = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+
+[node name="cloud" type="StaticBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.8333, 0.578938 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+shoot_target = null
+shoot_pattern = null
+shoot_amount = 0
+shoot_degree_step = 0
+shoot_delay = 0.1
+health = 5
+bullet_speed = 300.0
+bullet_bounces = 1
+path_speed = 1.0
+path_loops = 1
+path_offset = 0.0
+on_screen = false
+active = true
+pickable = null
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "fly"
+frame = 1
+playing = true
+flip_v = true
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 1.8333, 0.578938 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="origin" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0.0345192, -28.6574 )
+
+[node name="timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = true
+autostart = false
+
+[node name="sounds" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="dying_tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="hit_aid" type="Node2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="label" type="Label" parent="hit_aid"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/min_size = Vector2( 32, 32 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 48.0
+margin/top = 48.0
+margin/right = 16.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "64"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tween" type="Tween" parent="hit_aid"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+
+[connection signal="finished" from="sprite" to="." method="_on_sprite_finished"]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+
+[connection signal="tween_complete" from="dying_tween" to="." method="_on_dying_complete"]
+
+[connection signal="tween_complete" from="hit_aid/tween" to="." method="_on_tween_tween_complete"]
+
+

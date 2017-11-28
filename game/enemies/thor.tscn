@@ -1,0 +1,241 @@
+[gd_scene load_steps=32 format=1]
+
+[ext_resource path="res://enemies/thor.gd" type="Script" id=1]
+[ext_resource path="res://enemies/thor/thor_chariot_0.tex" type="Texture" id=2]
+[ext_resource path="res://enemies/thor/thor_chariot_3.tex" type="Texture" id=3]
+[ext_resource path="res://enemies/thor/thor_chariot_1.tex" type="Texture" id=4]
+[ext_resource path="res://enemies/thor/thor_chariot_6.tex" type="Texture" id=5]
+[ext_resource path="res://enemies/thor/thor_chariot_2.tex" type="Texture" id=6]
+[ext_resource path="res://enemies/thor/thor_chariot_5.tex" type="Texture" id=7]
+[ext_resource path="res://enemies/thor/thor_chariot_4.tex" type="Texture" id=8]
+[ext_resource path="res://enemies/thor/thor_chariot_00.tex" type="Texture" id=9]
+[ext_resource path="res://enemies/thor/thor_chariot_01.tex" type="Texture" id=10]
+[ext_resource path="res://enemies/thor/thor_chariot_02.tex" type="Texture" id=11]
+[ext_resource path="res://enemies/thor/thor_chariot_03.tex" type="Texture" id=12]
+[ext_resource path="res://enemies/thor/thor_01.tex" type="Texture" id=13]
+[ext_resource path="res://enemies/thor/thor_02.tex" type="Texture" id=14]
+[ext_resource path="res://enemies/thor/thor_03.tex" type="Texture" id=15]
+[ext_resource path="res://enemies/thor/thor_04.tex" type="Texture" id=16]
+[ext_resource path="res://enemies/thor/thor_05.tex" type="Texture" id=17]
+[ext_resource path="res://enemies/thor/thor_06.tex" type="Texture" id=18]
+[ext_resource path="res://enemies/thor/thor_07.tex" type="Texture" id=19]
+[ext_resource path="res://enemies/thor/thor_08.tex" type="Texture" id=20]
+[ext_resource path="res://enemies/thor/thor_09.tex" type="Texture" id=21]
+[ext_resource path="res://enemies/thor/thor_10.tex" type="Texture" id=22]
+[ext_resource path="res://enemies/thor/thor_hurt.tex" type="Texture" id=23]
+[ext_resource path="res://enemies/thor/thor_dead.tex" type="Texture" id=24]
+[ext_resource path="res://enemies/draug/draug_shoot.smp" type="Sample" id=25]
+[ext_resource path="res://hud/small_font.tres" type="DynamicFont" id=26]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 24.0
+height = 64.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "90",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "45",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "75",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "60",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "15",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "30",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "sparkle",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "fly",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "dying",
+"speed": 2.0
+} ]
+
+[sub_resource type="SampleLibrary" id=5]
+
+samples/shoot = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 25 )
+}
+
+[node name="thor" type="StaticBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+shoot_target = null
+shoot_pattern = null
+shoot_amount = 0
+shoot_degree_step = 0
+shoot_delay = 0.1
+health = 5
+bullet_speed = 300.0
+bullet_bounces = 1
+path_speed = 1.0
+path_loops = 1
+path_offset = 0.0
+on_screen = false
+active = true
+pickable = null
+
+[node name="chariot" type="AnimatedSprite" parent="."]
+
+transform/rot = 270.0
+frames = SubResource( 2 )
+animation = "90"
+playing = true
+
+[node name="chariot_sparkles" type="AnimatedSprite" parent="."]
+
+transform/rot = 270.0
+frames = SubResource( 3 )
+animation = "sparkle"
+frame = 2
+playing = true
+
+[node name="thor" type="AnimatedSprite" parent="."]
+
+transform/rot = 270.0
+frames = SubResource( 4 )
+animation = "fly"
+playing = true
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="origin" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -80 )
+
+[node name="timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = true
+autostart = false
+
+[node name="sounds" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 5 )
+config/pitch_random = 0.0
+
+[node name="dying_tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="hit_aid" type="Node2D" parent="."]
+
+[node name="label" type="Label" parent="hit_aid"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/min_size = Vector2( 32, 32 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 48.0
+margin/top = 48.0
+margin/right = 16.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "64"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tween" type="Tween" parent="hit_aid"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+
+[connection signal="finished" from="thor" to="." method="_on_sprite_finished"]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+
+[connection signal="tween_complete" from="dying_tween" to="." method="_on_dying_complete"]
+
+[connection signal="tween_complete" from="hit_aid/tween" to="." method="_on_tween_tween_complete"]
+
+

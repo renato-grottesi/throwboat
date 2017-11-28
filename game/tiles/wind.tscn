@@ -1,0 +1,32 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://levels/aids/wind1.tex" type="Texture" id=1]
+[ext_resource path="res://levels/aids/wind2.tex" type="Texture" id=2]
+[ext_resource path="res://levels/aids/wind3.tex" type="Texture" id=3]
+[ext_resource path="res://levels/aids/wind4.tex" type="Texture" id=4]
+[ext_resource path="res://levels/aids/wind5.tex" type="Texture" id=5]
+[ext_resource path="res://levels/aids/wind6.tex" type="Texture" id=6]
+[ext_resource path="res://levels/aids/wind7.tex" type="Texture" id=7]
+[ext_resource path="res://levels/aids/wind8.tex" type="Texture" id=8]
+[ext_resource path="res://levels/aids/wind9.tex" type="Texture" id=9]
+[ext_resource path="res://levels/aids/wind10.tex" type="Texture" id=10]
+[ext_resource path="res://levels/aids/wind11.tex" type="Texture" id=11]
+[ext_resource path="res://levels/aids/wind12.tex" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="wind" type="AnimatedSprite"]
+
+frames = SubResource( 1 )
+animation = "default"
+frame = 5
+playing = true
+
+

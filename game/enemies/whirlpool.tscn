@@ -1,0 +1,61 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://enemies/whirlpool.gd" type="Script" id=1]
+[ext_resource path="res://enemies/whirlpool/whirlpool1.tex" type="Texture" id=2]
+[ext_resource path="res://enemies/whirlpool/whirlpool2.tex" type="Texture" id=3]
+[ext_resource path="res://enemies/whirlpool/whirlpool3.tex" type="Texture" id=4]
+[ext_resource path="res://enemies/whirlpool/whirlpool4.tex" type="Texture" id=5]
+[ext_resource path="res://enemies/whirlpool/whirlpool5.tex" type="Texture" id=6]
+[ext_resource path="res://enemies/whirlpool/whirlpool6.tex" type="Texture" id=7]
+[ext_resource path="res://enemies/whirlpool/whirlpool7.tex" type="Texture" id=8]
+[ext_resource path="res://enemies/whirlpool/whirlpool8.tex" type="Texture" id=9]
+[ext_resource path="res://enemies/whirlpool/whirlpool9.tex" type="Texture" id=10]
+[ext_resource path="res://enemies/whirlpool/whirlpool10.tex" type="Texture" id=11]
+[ext_resource path="res://enemies/whirlpool/whirlpool11.tex" type="Texture" id=12]
+[ext_resource path="res://enemies/whirlpool/whirlpool12.tex" type="Texture" id=13]
+[ext_resource path="res://enemies/whirlpool/whirlpool13.tex" type="Texture" id=14]
+[ext_resource path="res://enemies/whirlpool/whirlpool14.tex" type="Texture" id=15]
+[ext_resource path="res://enemies/whirlpool/whirlpool15.tex" type="Texture" id=16]
+[ext_resource path="res://enemies/whirlpool/whirlpool16.tex" type="Texture" id=17]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="whirlpool" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+unit_offset = 0.0
+
+[node name="animation" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "default"
+frame = 12
+playing = true
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

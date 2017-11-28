@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://ship/pickable.gd" type="Script" id=1]
+[ext_resource path="res://ship/shield.tex" type="Texture" id=2]
+[ext_resource path="res://ship/magnet.tex" type="Texture" id=3]
+[ext_resource path="res://ship/black_hole1.tex" type="Texture" id=4]
+[ext_resource path="res://ship/black_hole2.tex" type="Texture" id=5]
+[ext_resource path="res://ship/black_hole3.tex" type="Texture" id=6]
+[ext_resource path="res://ship/black_hole4.tex" type="Texture" id=7]
+[ext_resource path="res://ship/beer.tex" type="Texture" id=8]
+[ext_resource path="res://ship/mjolnir.tex" type="Texture" id=9]
+[ext_resource path="res://ship/loki.tex" type="Texture" id=10]
+[ext_resource path="res://ship/ormen.tex" type="Texture" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "shield",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "magnet",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "hole",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "beer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "thor",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "loki",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "ormen",
+"speed": 5.0
+} ]
+
+[node name="pickable" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+type = null
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="animation" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "ormen"
+
+[connection signal="body_enter" from="." to="." method="_on_pickable_body_enter"]
+
+

@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://enemies/barrel.gd" type="Script" id=1]
+[ext_resource path="res://enemies/barrel_body.gd" type="Script" id=2]
+[ext_resource path="res://ship/barrel.tex" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 2.01071, 0.00170572, 0, -3, 1.01312, -1.02298, -0.995107, 0.985435, 2, 2, 0.00207855, 1.98924, 0, -0.993029, -3, -1, 0.00341144, -1.98113, 0.00815267, 1.98454, 3, -1, 1.01237, 1.01517, -0.985435, -0.993029, -2, 2, -1.99744, 0.00170572, 0, 0, 0, -3 )
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 12.0
+height = 16.0
+
+[node name="barrel" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="float_path" type="Path2D" parent="."]
+
+curve = SubResource( 1 )
+
+[node name="follow" type="PathFollow2D" parent="float_path"]
+
+transform/pos = Vector2( 0, -3 )
+transform/rot = -59.4931
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="body" type="StaticBody2D" parent="float_path/follow"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="float_path/follow/body"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="sprite" type="Sprite" parent="float_path/follow/body"]
+
+texture = ExtResource( 3 )
+
+

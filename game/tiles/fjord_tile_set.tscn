@@ -1,0 +1,340 @@
+[gd_scene load_steps=44 format=1]
+
+[ext_resource path="res://tiles/coast_corner_1.tex" type="Texture" id=1]
+[ext_resource path="res://tiles/coast_flat_1.tex" type="Texture" id=2]
+[ext_resource path="res://tiles/coast_swing_1.tex" type="Texture" id=3]
+[ext_resource path="res://tiles/coast_inner.tex" type="Texture" id=4]
+[ext_resource path="res://tiles/coast_swing_2.tex" type="Texture" id=5]
+[ext_resource path="res://tiles/water1.tex" type="Texture" id=6]
+[ext_resource path="res://tiles/water2.tex" type="Texture" id=7]
+[ext_resource path="res://tiles/water3.tex" type="Texture" id=8]
+[ext_resource path="res://tiles/water4.tex" type="Texture" id=9]
+[ext_resource path="res://tiles/water5.tex" type="Texture" id=10]
+[ext_resource path="res://tiles/water6.tex" type="Texture" id=11]
+[ext_resource path="res://tiles/water7.tex" type="Texture" id=12]
+[ext_resource path="res://tiles/water8.tex" type="Texture" id=13]
+[ext_resource path="res://tiles/coast_flat_wave2.tex" type="Texture" id=14]
+[ext_resource path="res://tiles/coast_flat_wave3.tex" type="Texture" id=15]
+[ext_resource path="res://tiles/coast_flat_wave4.tex" type="Texture" id=16]
+[ext_resource path="res://tiles/coast_flat_wave5.tex" type="Texture" id=17]
+[ext_resource path="res://tiles/coast_flat_wave6.tex" type="Texture" id=18]
+[ext_resource path="res://tiles/coast_flat_wave7.tex" type="Texture" id=19]
+[ext_resource path="res://tiles/coast_flat_wave8.tex" type="Texture" id=20]
+[ext_resource path="res://tiles/coast_flat_wave9.tex" type="Texture" id=21]
+[ext_resource path="res://tiles/tree_top.tex" type="Texture" id=22]
+[ext_resource path="res://tiles/rain1.tex" type="Texture" id=23]
+[ext_resource path="res://tiles/rain2.tex" type="Texture" id=24]
+[ext_resource path="res://tiles/rain3.tex" type="Texture" id=25]
+[ext_resource path="res://tiles/rain4.tex" type="Texture" id=26]
+[ext_resource path="res://tiles/rain5.tex" type="Texture" id=27]
+[ext_resource path="res://tiles/rain6.tex" type="Texture" id=28]
+[ext_resource path="res://tiles/rain7.tex" type="Texture" id=29]
+[ext_resource path="res://tiles/rain8.tex" type="Texture" id=30]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 14, 12, 14, 18, 20, 18, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, -32, 32, -32, 14, 0, 14 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -64, 32, -64, 0, -46, 0, -46, 10 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -32, 32, -64, 32, -46, 10, -42, 14 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -32, 32, -42, 14, -32, 14 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, 18, 32, 32, 44, 32, 64, 0, 64 )
+
+[sub_resource type="CanvasItemShader" id=7]
+
+_code = {
+"fragment": "uniform texture frame1;
+uniform texture frame2;
+uniform texture frame3;
+uniform texture frame4;
+uniform texture frame5;
+uniform texture frame6;
+uniform texture frame7;
+uniform texture frame8;
+
+float time = fract(TIME);
+if (time < 1.0/8.0) { COLOR = tex(frame1, UV);} else {
+if (time < 2.0/8.0) { COLOR = tex(frame2, UV);} else {
+if (time < 3.0/8.0) { COLOR = tex(frame3, UV);} else {
+if (time < 4.0/8.0) { COLOR = tex(frame4, UV);} else {
+if (time < 5.0/8.0) { COLOR = tex(frame5, UV);} else {
+if (time < 6.0/8.0) { COLOR = tex(frame6, UV);} else {
+if (time < 7.0/8.0) { COLOR = tex(frame7, UV);} else {
+if (time < 8.0/8.0) { COLOR = tex(frame8, UV);} else {
+
+}}}}}}}}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 6 )
+shader_param/frame2 = ExtResource( 7 )
+shader_param/frame3 = ExtResource( 8 )
+shader_param/frame4 = ExtResource( 9 )
+shader_param/frame5 = ExtResource( 10 )
+shader_param/frame6 = ExtResource( 11 )
+shader_param/frame7 = ExtResource( 12 )
+shader_param/frame8 = ExtResource( 13 )
+
+[sub_resource type="CanvasItemMaterial" id=9]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 14 )
+shader_param/frame2 = ExtResource( 15 )
+shader_param/frame3 = ExtResource( 16 )
+shader_param/frame4 = ExtResource( 17 )
+shader_param/frame5 = ExtResource( 18 )
+shader_param/frame6 = ExtResource( 19 )
+shader_param/frame7 = ExtResource( 20 )
+shader_param/frame8 = ExtResource( 21 )
+
+[sub_resource type="CanvasItemMaterial" id=15]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 23 )
+shader_param/frame2 = ExtResource( 24 )
+shader_param/frame3 = ExtResource( 25 )
+shader_param/frame4 = ExtResource( 26 )
+shader_param/frame5 = ExtResource( 27 )
+shader_param/frame6 = ExtResource( 28 )
+shader_param/frame7 = ExtResource( 29 )
+shader_param/frame8 = ExtResource( 30 )
+
+[sub_resource type="CanvasItemMaterial" id=11]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 16 )
+shader_param/frame2 = ExtResource( 17 )
+shader_param/frame3 = ExtResource( 18 )
+shader_param/frame4 = ExtResource( 19 )
+shader_param/frame5 = ExtResource( 20 )
+shader_param/frame6 = ExtResource( 21 )
+shader_param/frame7 = ExtResource( 14 )
+shader_param/frame8 = ExtResource( 15 )
+
+[sub_resource type="CanvasItemMaterial" id=12]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 18 )
+shader_param/frame2 = ExtResource( 19 )
+shader_param/frame3 = ExtResource( 20 )
+shader_param/frame4 = ExtResource( 21 )
+shader_param/frame5 = ExtResource( 14 )
+shader_param/frame6 = ExtResource( 15 )
+shader_param/frame7 = ExtResource( 16 )
+shader_param/frame8 = ExtResource( 17 )
+
+[sub_resource type="CanvasItemMaterial" id=13]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 20 )
+shader_param/frame2 = ExtResource( 21 )
+shader_param/frame3 = ExtResource( 14 )
+shader_param/frame4 = ExtResource( 15 )
+shader_param/frame5 = ExtResource( 16 )
+shader_param/frame6 = ExtResource( 17 )
+shader_param/frame7 = ExtResource( 18 )
+shader_param/frame8 = ExtResource( 19 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="coast_corner_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="body" type="StaticBody2D" parent="coast_corner_1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionPolygon2D" parent="coast_corner_1/body"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 14, 12, 14, 18, 20, 18, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="coast_flat_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="body" type="StaticBody2D" parent="coast_flat_1"]
+
+transform/pos = Vector2( 32, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionPolygon2D" parent="coast_flat_1/body"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 14, -32, 14, -32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="coast_swing_1" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+centered = false
+
+[node name="body" type="StaticBody2D" parent="coast_swing_1"]
+
+transform/pos = Vector2( 64, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 4 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 5 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionPolygon2D" parent="coast_swing_1/body"]
+
+build_mode = 0
+polygon = Vector2Array( -64, 0, -46, 0, -46, 10, -42, 14, -32, 14, -32, 32, -64, 32 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+[node name="coast_inner" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="coast_swing_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 64, 32 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="body" type="StaticBody2D" parent="coast_swing_2"]
+
+transform/pos = Vector2( 0, -32 )
+input/pickable = false
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionPolygon2D" parent="coast_swing_2/body"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 32, 18, 32, 32, 44, 32, 64, 0, 64 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="water" type="Sprite" parent="."]
+
+material/material = SubResource( 8 )
+transform/pos = Vector2( 0, 32 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="coast_flat_wave" type="Sprite" parent="."]
+
+material/material = SubResource( 9 )
+transform/pos = Vector2( 32, 64 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="tree_top" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 64 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="rain" type="Sprite" parent="."]
+
+material/material = SubResource( 15 )
+transform/pos = Vector2( 64, 64 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="coast_flat_async_wave_0" type="Sprite" parent="."]
+
+material/material = SubResource( 11 )
+transform/pos = Vector2( 32, 96 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="coast_flat_async_wave_1" type="Sprite" parent="."]
+
+material/material = SubResource( 12 )
+transform/pos = Vector2( 32, 122 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="coast_flat_async_wave_2" type="Sprite" parent="."]
+
+material/material = SubResource( 13 )
+transform/pos = Vector2( 32, 148 )
+texture = ExtResource( 17 )
+centered = false
+
+

@@ -1,0 +1,247 @@
+[gd_scene load_steps=25 format=1]
+
+[ext_resource path="res://ship/ship.gd" type="Script" id=1]
+[ext_resource path="res://ship/ship.tex" type="Texture" id=2]
+[ext_resource path="res://ship/sail_reefed.tex" type="Texture" id=3]
+[ext_resource path="res://ship/sail_1.tex" type="Texture" id=4]
+[ext_resource path="res://ship/sail_2.tex" type="Texture" id=5]
+[ext_resource path="res://ship/explosion1.tex" type="Texture" id=6]
+[ext_resource path="res://ship/explosion2.tex" type="Texture" id=7]
+[ext_resource path="res://ship/explosion3.tex" type="Texture" id=8]
+[ext_resource path="res://ship/explosion4.tex" type="Texture" id=9]
+[ext_resource path="res://ship/explosion5.tex" type="Texture" id=10]
+[ext_resource path="res://ship/explosion6.tex" type="Texture" id=11]
+[ext_resource path="res://ship/explosion7.tex" type="Texture" id=12]
+[ext_resource path="res://ship/explosion8.tex" type="Texture" id=13]
+[ext_resource path="res://ship/explosion9.tex" type="Texture" id=14]
+[ext_resource path="res://ship/explosion10.tex" type="Texture" id=15]
+[ext_resource path="res://ship/explosion11.tex" type="Texture" id=16]
+[ext_resource path="res://ship/ormen_shield.gd" type="Script" id=17]
+[ext_resource path="res://ship/ormen_shield.tex" type="Texture" id=18]
+[ext_resource path="res://ship/shield.tscn" type="PackedScene" id=19]
+[ext_resource path="res://hud/medium_font.tres" type="DynamicFont" id=20]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 8.0
+height = 32.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "reefed",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "sail",
+"speed": 2.5
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "explode",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 32.0
+
+[node name="ship" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+max_health = 100
+vel = Vector2( 0, 0 )
+shield_angle = 0
+health = 0
+
+[node name="water_splash" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 0, -28 )
+config/amount = 256
+config/lifetime = 2.0
+config/process_mode = 1
+config/local_space = false
+params/direction = 180.0
+params/spread = 90.0
+params/linear_velocity = 15.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 3.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="body" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="sail" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "sail"
+frame = 1
+playing = true
+flip_v = true
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="visibility" type="VisibilityNotifier2D" parent="."]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="explosion" type="AnimatedSprite" parent="."]
+
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 3 )
+animation = "explode"
+frame = 3
+offset = Vector2( 0, -16 )
+
+[node name="shield_frozen_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = true
+autostart = false
+
+[node name="invert_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = true
+autostart = false
+
+[node name="extra_shield_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 20.0
+one_shot = true
+autostart = false
+
+[node name="ormen_shield_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 20.0
+one_shot = true
+autostart = false
+
+[node name="ormen_shield" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 17 )
+
+[node name="shape" type="CollisionShape2D" parent="ormen_shield"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="sprite" type="Sprite" parent="ormen_shield"]
+
+texture = ExtResource( 18 )
+
+[node name="shield" parent="." instance=ExtResource( 19 )]
+
+[node name="shield_extra" parent="." instance=ExtResource( 19 )]
+
+[node name="hit_aid" type="Node2D" parent="."]
+
+[node name="label" type="Label" parent="hit_aid"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/min_size = Vector2( 32, 32 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 48.0
+margin/top = 48.0
+margin/right = 12.0
+margin/bottom = 13.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 4
+text = "64"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tween" type="Tween" parent="hit_aid"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+
+[node name="teleport_tween_begin" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+
+[node name="teleport_tween_end" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+
+[connection signal="finished" from="explosion" to="." method="_on_explosion_finished"]
+
+[connection signal="timeout" from="shield_frozen_timer" to="." method="_on_shield_frozen_timer_timeout"]
+
+[connection signal="timeout" from="invert_timer" to="." method="_on_invert_timer_timeout"]
+
+[connection signal="timeout" from="extra_shield_timer" to="." method="_on_extra_shield_timer_timeout"]
+
+[connection signal="timeout" from="ormen_shield_timer" to="." method="_on_ormen_shield_timer_timeout"]
+
+[connection signal="tween_complete" from="hit_aid/tween" to="." method="_on_hit_aid_tween_complete"]
+
+[connection signal="tween_complete" from="teleport_tween_begin" to="." method="_on_teleport_tween_begin_tween_complete"]
+
+[connection signal="tween_complete" from="teleport_tween_end" to="." method="_on_teleport_tween_end_tween_complete"]
+
+

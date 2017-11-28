@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://hud/input_hud.gd" type="Script" id=1]
+[ext_resource path="res://hud/thumbstick.tscn" type="PackedScene" id=2]
+
+[node name="input_hud" type="Node2D"]
+
+script/script = ExtResource( 1 )
+vel = Vector2( 0, 0 )
+angle = 0.0
+
+[node name="left" parent="." instance=ExtResource( 2 )]
+
+visibility/visible = false
+transform/pos = Vector2( 192, 544 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="right" parent="." instance=ExtResource( 2 )]
+
+visibility/visible = false
+transform/pos = Vector2( 1088, 544 )
+transform/scale = Vector2( 1, 1 )
+
+

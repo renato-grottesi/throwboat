@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://hud/thumbstick.gd" type="Script" id=1]
+[ext_resource path="res://hud/thumbstick_outline.tex" type="Texture" id=2]
+[ext_resource path="res://hud/thumbstick.tex" type="Texture" id=3]
+
+[node name="thumbstick" type="Node2D"]
+
+transform/scale = Vector2( 2, 2 )
+script/script = ExtResource( 1 )
+axis = Vector2( 0, 0 )
+
+[node name="thumbstick_outline" type="Sprite" parent="."]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="thumbstick" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+
